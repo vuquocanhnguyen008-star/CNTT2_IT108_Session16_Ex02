@@ -1,0 +1,23 @@
+# Bài 2: Quản lý Quyền truy cập Báo cáo Tài chính
+
+## 1. Bảng phân quyền (nguyên tắc đặc quyền tối thiểu - Least Privilege)
+| Vai trò | Quyền | Đối tượng | Lý do |
+|---|---|---|---|
+| Viewer | Chỉ xem | Ứng viên bên ngoài, đối tác | Không sửa, không bình luận, tắt tải xuống/in/copy |
+| Commenter | Xem + bình luận | Trưởng bộ phận | Góp ý mà không đổi dữ liệu gốc |
+| Editor | Xem + sửa + chia sẻ | Trưởng phòng nhân sự (chủ file) | Chỉ 1-2 người, không cấp cho người ngoài |
+
+## 2. Áp dụng
+- Danh sách ứng viên chứa SĐT và mức lương nên mặc định Restricted, chỉ người được mời mới xem được.
+- Tắt tùy chọn "Anyone with the link" và tắt "Editors can change permissions and share".
+- Trưởng bộ phận dùng Suggesting Mode: mọi chỉnh sửa hiện dưới dạng đề xuất, chủ file Accept/Reject, dữ liệu gốc không bị thay đổi.
+
+## 3. Access Audit Log
+- Định kỳ (tuần/tháng) vào phần Chia sẻ/Audit log để xem ai được truy cập, ai đã xem/tải/sửa.
+- Phát hiện quyền thừa hoặc tài khoản lạ thì gỡ ngay.
+- Dùng link có thời hạn (expiry date) khi chia sẻ.
+
+## 4. Kịch bản sự cố: lỡ gửi link Editor cho người ngoài (3 bước)
+1. Thu hồi ngay: vào Share, đổi link thành Restricted hoặc Stop sharing, gỡ quyền người đó (hoặc tạo bản sao rồi xóa bản gốc nếu cần).
+2. Kiểm tra: xem Audit log/Activity để biết họ đã mở, sửa, tải, copy hay chưa; xem Version History nếu có chỉnh sửa lạ và Restore bản cũ.
+3. Xử lý hậu quả: nếu có tải/rò rỉ, báo quản lý, liên hệ yêu cầu xóa dữ liệu, đổi quy trình và nhắc nhân viên kiểm tra quyền trước khi gửi link.
